@@ -5,8 +5,21 @@ const app = express();
 const Port = process.env.PORT || 3000;
 
 // conexion a base de datos
+const user = "luissugusdev";
+const password = "nd3efB13AGtmwxGB";
+const dbname = "veterinaria";
+const uri = `mongodb+srv://${user}:${password}@cluster0.0v1f3.mongodb.net/${dbname}?retryWrites=true&w=majority`;
 
 const mongoose = require('mongoose');
+mongoose.connect(uri, 
+{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(()=>console.log('Base de datos conectada...!'))
+.catch(e => console.log(e))
+
+
 
 //Motor de plantilla
 app.set('view engine', 'ejs');
@@ -30,5 +43,5 @@ app.use((req, res, next)=>{
 })
 
 app.listen(Port, ()=>{
-    console.log(' te estamos observando ...!');
+    console.log(`estamos escuchando on port ${Port}!`);
 })
