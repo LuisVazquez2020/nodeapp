@@ -2,7 +2,11 @@ const express = require('express');
 
 const app = express();
 
-const Port = 8080;
+const Port = process.env.PORT || 3000;
+
+// conexion a base de datos
+
+const mongoose = require('mongoose');
 
 //Motor de plantilla
 app.set('view engine', 'ejs');
@@ -12,22 +16,10 @@ app.set('views', __dirname + '/views'); // specify the views directory
 app.use(express.static(__dirname + "/public"));
 //console.log(__dirname);
 
-app.get('/', function(req, res){
- //   console.log(__dirname);
 
-    res.render("index", {titulo: "Mi titulo dinamico"})
-})
-
-app.get('/services', function(req, res){
-    console.log(__dirname);
-    res.render("servicios", {tituloServicios:"Hola Mundo esta es la pagina de servicios"})
-})
-
-app.get('/contactos', function(req, res){
-
-    res.render("contactos", {tituloContactos:"Hola Mundo esta es la pagina de contactos"})
-
-})
+//Rutas Web --importadas
+app.use('/', require('./router/rutasWeb'))
+app.use('/mascotas', require('./router/mascotas'))
 
 app.use((req, res, next)=>{
     res.status(404).render("error.ejs",
