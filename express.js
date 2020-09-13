@@ -7,13 +7,13 @@ const Port = 8080;
 //Motor de plantilla
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views'); // specify the views directory
-console.log(__dirname);
+//console.log(__dirname);
 
 app.use(express.static(__dirname + "/public"));
-console.log(__dirname);
+//console.log(__dirname);
 
 app.get('/', function(req, res){
-    console.log(__dirname);
+ //   console.log(__dirname);
 
     res.render("index", {titulo: "Mi titulo dinamico"})
 })
@@ -38,5 +38,5 @@ app.use((req, res, next)=>{
 })
 
 app.listen(Port, ()=>{
-    console.log(' estamos escuchando....!');
+    console.log(' te estamos observando ...!');
 })
