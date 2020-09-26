@@ -22,6 +22,9 @@ router.get('/services', function(req, res){
 router.get('/contactos', function(req, res){
     res.render("contactos", {tituloContactos:"Hola Mundo esta es la pagina de contactos"})
 })
+/* router.get('/mascotas', function(req, res){
+    res.render("mascotas", {tituloMascotas:"Hola Mundo esta es la pagina de Mascotas"})
+}) */
 
 
 
