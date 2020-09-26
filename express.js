@@ -1,14 +1,12 @@
 const express = require('express');
 
 const app = express();
-
+require('dotenv').config()
 const Port = process.env.PORT || 3000;
 
 // conexion a base de datos
-const user = "luissugusdev";
-const password = "nd3efB13AGtmwxGB";
-const dbname = "veterinaria";
-const uri = `mongodb+srv://${user}:${password}@cluster0.0v1f3.mongodb.net/${dbname}?retryWrites=true&w=majority`;
+
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.0v1f3.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 
 const mongoose = require('mongoose');
 mongoose.connect(uri, 
@@ -45,3 +43,5 @@ app.use((req, res, next)=>{
 app.listen(Port, ()=>{
     console.log(`estamos escuchando on port ${Port}!`);
 })
+
+
