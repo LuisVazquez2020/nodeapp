@@ -1,10 +1,22 @@
 const express = require('express');
 
+const bodyParser = require('body-parser');
+
 const app = express();
+
+
+
+
+//configurations
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
 require('dotenv').config()
+
 const Port = process.env.PORT || 3000;
 
-// conexion a base de datos
+
+// connect to database
 
 const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.0v1f3.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 
